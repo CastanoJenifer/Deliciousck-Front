@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom"
-import Contenido from "./componentes/contenido";
+import Contenido from "./componentes/Contenido.jsx";
 import Inforeceta from "./Page/InfoReceta";
+import './App.css';
 import DetallesReceta from "./Page/DetallesReceta";
 
 
