@@ -1,8 +1,12 @@
 import { RiSearchLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 
+
+
 const Header = () => {
   const navigate = useNavigate();
+  
+ 
 
   return (
     <div className="w-full mx-auto fixed top-0 py-6 sm:py-4 z-10 bg-gradient-to-r from-blue-200 to-green-300 shadow-md">
@@ -34,13 +38,16 @@ const Header = () => {
                     md:text-black-700 md:p-0 md:dark:text-500 transition-colors 
                     duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Tipos de recetas</a>
 
-                   <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md">
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Tradicional</a></li>
+                    <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md">
+                      
+                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i className="fas fa-cocktail mr-2"></i> Tradicional</a></li>
                       <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reposteria</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Navideña</a></li>
+                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> Navideña</a></li>
                       <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Salsas</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bebidas</a></li>
-                   </ul>
+                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bebidas </a></li>
+                     
+
+                    </ul>
                 </li> 
                 
                 {/*Busqueda por filtros*/}

@@ -9,7 +9,7 @@ body {
 
 .targeta{
     background: rgb(231,215,109);
-    background: linear-gradient(82deg, rgba(231,215,109,1) 39%, rgba(231,126,130,1) 58%);
+    background: linear-gradient(82deg, rgb(179, 239, 166) 39%, rgb(199, 231, 126) 58%);
 }
 
 .card:hover{
