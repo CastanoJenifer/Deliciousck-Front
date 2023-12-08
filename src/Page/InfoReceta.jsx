@@ -1,11 +1,17 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const Inforeceta= () => {
   const navigate = useNavigate();
+  const { tipoReceta } = useParams();
 
   const goToInicio = () => {
     navigate("/");
+  };
+
+  const goToDetallesReceta = () => {
+    navigate("/detallesReceta");
   };
 
   return (
@@ -39,10 +45,10 @@ const Inforeceta= () => {
         </svg>
       </button>
     
-     <h1 className='text-center italic text-black text-5xl font-bold z-10 bottom-4 left-4'>Tipo de receta</h1>  {/*Aqui va el titulo dependiendo del tipo */}
+     <h1 className='text-center italic text-black text-5xl font-bold z-10 bottom-4 left-4'>Tipo de receta {tipoReceta}</h1>  {/*Aqui va el titulo dependiendo del tipo */}
     
     {/*Recetas*/}
-     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 overflow-hidden">
+     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
      <div className="group rounded-xl m-5 shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-90 hover:border-4 hover:border-green-500 relative" style={{ background: 'linear-gradient(to right, #B4F0B4, #B4E3F0)' }}>
                    
                     <img
@@ -56,7 +62,12 @@ const Inforeceta= () => {
                       </h2>
                    </div>
                 
-
+                   <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={goToDetallesReceta}
+      >
+        Ir a Detalles de la Receta
+      </button>
 
 
                 </div>

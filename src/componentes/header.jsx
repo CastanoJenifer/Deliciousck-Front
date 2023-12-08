@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
+  
+ 
 
   return (
     <div className="w-full mx-auto fixed top-0 py-6 sm:py-4 z-10 bg-gradient-to-r from-blue-200 to-green-300 shadow-md">
