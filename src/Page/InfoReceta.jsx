@@ -43,7 +43,7 @@ const Inforeceta= () => {
     
     {/*Recetas*/}
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 overflow-hidden">
-     <div className="group bg-white rounded-xl m-5 shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-90 hover:border-4 hover:border-green-500 relative">
+     <div className="group rounded-xl m-5 shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-90 hover:border-4 hover:border-green-500 relative" style={{ background: 'linear-gradient(to right, #B4F0B4, #B4E3F0)' }}>
                    
                     <img
                       src={'https://www.recetasnestle.com.mx/sites/default/files/styles/recipe_detail_desktop/public/srh_recipes/1c06b340734ce162966b6e4847497f52.webp?itok=U9xQDeRi'}
