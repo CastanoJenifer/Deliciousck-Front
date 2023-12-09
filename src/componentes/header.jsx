@@ -1,12 +1,28 @@
 import { RiSearchLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 
 
 const Header = () => {
   const navigate = useNavigate();
   
- 
+  const handleTipoRecetaClick = async (tipoReceta) => {
+   try {
+     const response = await axios.get(`http://localhost:3000/recetas/${tipoReceta}`);
+     const data = response.data;
+
+     if (response.status === 200) {
+       console.log('Datos del backend:', data);
+       // Aquí puedes manejar los datos según tus necesidades
+     
+       navigate(`/infoReceta/${tipoReceta}`);
+       console.error('Error en la respuesta del backend:', data.message);
+     }
+   } catch (error) {
+     console.error('Error al llamar a la API:', error);
+   }
+ };
 
   return (
     <div className="w-full mx-auto fixed top-0 py-6 sm:py-4 z-10 bg-gradient-to-r from-blue-200 to-green-300 shadow-md">
@@ -33,18 +49,18 @@ const Header = () => {
                 {/*Desplegable */}
                 <li className="relative group">
                    <a href= "/infoReceta" onClick={(e) => { e.preventDefault(); 
-                navigate('/infoReceta'); 
+                ; 
                 }} className=" text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent
                     md:text-black-700 md:p-0 md:dark:text-500 transition-colors 
                     duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Tipos de recetas</a>
 
                     <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md">
                       
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"><i className="fas fa-cocktail mr-2"></i> Tradicional</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reposteria</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> Navideña</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Salsas</a></li>
-                      <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Bebidas </a></li>
+                      <li><a href="#" onClick={() => handleTipoRecetaClick('tradicional')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">🍲 Tradicional</a></li>
+                      <li><a href="#" onClick={() => handleTipoRecetaClick('reposteria')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍰 Repostería</a></li>
+                      <li><a href="#" onClick={() => handleTipoRecetaClick('navidena')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🎄 Navideña</a></li>
+                      <li><a href="#" onClick={() => handleTipoRecetaClick('salsas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🌶️ Salsas</a></li>
+                      <li><a href="#" onClick={() => handleTipoRecetaClick('bebidas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍹 Bebidas </a></li>
                      
 
                     </ul>
