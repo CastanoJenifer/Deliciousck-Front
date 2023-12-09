@@ -5,12 +5,47 @@ import axios from 'axios'
 
 
 const DetallesReceta = () => {
+  const [loading, setLoading] = useState(true);
+  const [detallesReceta, setDetallesReceta] = useState({
+    receta: [{ nombre: '', tipo: '' }],
+    her: [],
+    ing: [],
+    pasos: [],
+  });
+  
+  const { recetaId } = useParams();
     const goBack = () => {
         window.history.back();
       };
+
+      useEffect(() => {
+        const fetchDetallesReceta = async () => {
+          try {
+            setLoading(true);
+            const response = await axios.get(`http://localhost:3000/recetas/body/${recetaId}`);
+            setDetallesReceta(response.data);
+            console.log(detallesReceta);
+          } catch (error) {
+            console.error('Error al obtener detalles de la receta:', error);
+          }finally {
+            setLoading(false);
+          }
+        };
     
+        fetchDetallesReceta();
+      }, []);
+
     return (
        <>
+       {loading ? (
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="flex items-center justify-center">
+            <div className="inline-block h-16 w-16 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-middle text-black">
+              <span className="hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      ) : (
        <div className="min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{
           backgroundImage:
@@ -42,16 +77,20 @@ const DetallesReceta = () => {
 
        
        {/* Sección Izquierda: Titulo, imagen, tipo, valoracion */}
-        <div className="w-1/3 h-[80vh] bg-white p-8 rounded-md z-10">
+        <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
           <h4 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">
-          
-            <span className="text-black text-x2 font-semibold">Titulo</span>
+          <span className="text-black text-x2 font-semibold">{detallesReceta.receta[0].nombre}</span>
           </h4>
-          <h4 className="text-gray-700 text-lg mb-4 text-center">
-            <span className="text-black text-xl font-semibold">imagen</span>
+          <img
+                src={`http://localhost:3000/${detallesReceta.receta[0].imagenprincipal}`}
+                alt={detallesReceta.receta[0].nombre}
+                className="w-4/5 h-80 mx-auto object-cover rounded-t-xl text-center m-6"
+              />
+          <h4 className="text-gray-700 text-lg mt-2 mb-4  text-center">
+          <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tipo}</span>
           </h4>
           <h4 className="text-gray-700 text-lg mt-2 mb-4  text-center">
-            <span className="text-black text-xl font-semibold">tipo</span>
+          <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tiempoduracion}</span>
           </h4>
           <h4 className="text-gray-700 text-lg mb-4  text-center">
             <span className="text-black text-xl font-semibold">
@@ -60,28 +99,35 @@ const DetallesReceta = () => {
           </h4>
         </div>
        
-        <div className="h-[80vh] w-2 bg-black absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"></div>
+        <div className="h-[89vh] w-2 bg-black absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"></div>
 
      
           {/* Sección derecha: Utensilios, ingredientes, descripción, etc. */}
-        <div className="w-1/3 h-[80vh] bg-white p-8 rounded-md z-10">
+        <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
           <h4 className="text-gray-700 text-lg mt-2 mb-4">
-            <span className="text-black text-xl font-semibold">Utensilios: </span>
+              <span className="text-black text-xl">Utensilios: {detallesReceta.her.map((herramienta) => herramienta.nombre).join(' , ')}</span>
           </h4>
-         
-          <h4 className="text-gray-700 text-lg mt-2 mb-4">
-            <span className="text-black text-xl font-semibold">Ingredientes: </span>
-          </h4>
-          <h4 className="text-gray-700 text-lg mb-4">
-            <span className="text-black text-xl font-semibold">
-              Descripción: 
+            
+            <h4 className="text-gray-700 text-lg mt-2 mb-4">
+            <span className="text-black text-xl ">
+            Ingredientes: {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
             </span>
           </h4>
-        </div>
 
-      
+          <h4 className="text-gray-700 text-lg ">
+          <span className="text-black text-xl font-semibold">Descripción:</span>
+          </h4>
+            <ol className="list-decimal list-inside">
+           {detallesReceta.pasos.map((paso, index) => (
+           <li key={index} className="text-black text-xl">
+            {paso.descripcion}
+          </li>
+        ))}
+      </ol>
+      </div>
 
       </div>
+      )}
       </>
     );
 };

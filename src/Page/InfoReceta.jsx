@@ -7,20 +7,22 @@ import axios from 'axios'
 const Inforeceta= () => {
   const navigate = useNavigate();
   const { tipoReceta } = useParams();
+  const [loading, setLoading] = useState(true);
   const [recetas, setRecipes] = useState([]);
 
   const goToInicio = () => {
     navigate("/");
   };
 
-  const goToDetallesReceta = () => {
-    navigate("/detallesReceta");
+  const goToDetallesReceta = (recetaId) => {
+    navigate(`/detallesReceta/${recetaId}`);
   };
   
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
+        setLoading(true);
         let response;
         switch (tipoReceta) {
           case 'tradicional':
@@ -45,6 +47,8 @@ const Inforeceta= () => {
         setRecipes(response.data);
       } catch (error) {
         console.error('Error al obtener recetas:', error);
+      } finally {
+        setLoading(false);  // Agrega esta línea para indicar que la carga ha finalizado
       }
     };
     // Llama a la función para obtener las recetas cuando el componente se monta
@@ -76,8 +80,16 @@ const Inforeceta= () => {
         </button>
   
         <h1 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">{tipoReceta}</h1>
-  
-        {/* Recetas */}
+        {loading ? (
+                  <div className="flex items-center justify-center min-h-screen">
+                    <div className="flex items-center justify-center">
+                      <div className="inline-block h-16 w-16 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-middle text-black">
+                        <span className="hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+          ) : (
+
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
           {recetas.map((receta) => (
             <div
@@ -98,17 +110,17 @@ const Inforeceta= () => {
               </div>
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={goToDetallesReceta}
+                onClick={() => goToDetallesReceta(receta.cod)}
               >
-                Ir a Detalles de la Receta
               </button>
             </div>
           ))}
         </div>
+        )}
+        </div>
       </div>
-    </div>
+   
   );
-  
 };
 
 export default Inforeceta;
