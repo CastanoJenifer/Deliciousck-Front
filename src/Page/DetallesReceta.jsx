@@ -245,21 +245,22 @@ const DetallesReceta = () => {
      
 
         
-      <div className="flex items-center justify-center mt-8">
-        <button
-          onClick={mostrarSiguientePagina}
-          className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition duration-300 ease-in-out mr-8"
-        >
-          Siguiente página
-        </button>
+       <div className="flex items-center justify-center mt-8">
+            <button
+              onClick={mostrarPaginaAnterior}
+              className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out"
+            >
+              Página anterior
+            </button>
 
-        <button
-          onClick={mostrarPaginaAnterior}
-          className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out"
-        >
-          Página anterior
-        </button>
-    </div>
+            <button
+              onClick={mostrarSiguientePagina}
+              className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition duration-300 ease-in-out ml-6" 
+            >
+              Siguiente página
+            </button>
+     </div>
+
 
       </div>
 
