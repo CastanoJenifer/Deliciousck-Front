@@ -1,11 +1,18 @@
 import { RiSearchLine } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios'
 
 
 
-const Header = () => {
+const Header = ({ onSearch }) => {
   const navigate = useNavigate();
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    onSearch(e.target.value);
+  };
   
   const handleTipoRecetaClick = async (tipoReceta) => {
    try {
@@ -48,8 +55,7 @@ const Header = () => {
            
                 {/*Desplegable */}
                 <li className="relative group">
-                   <a href= "/infoReceta" onClick={(e) => { e.preventDefault(); 
-                ; 
+                   <a href= "/infoReceta" onClick={(e) => { e.preventDefault();
                 }} className=" text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent
                     md:text-black-700 md:p-0 md:dark:text-500 transition-colors 
                     duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Tipos de recetas</a>
@@ -76,7 +82,13 @@ const Header = () => {
           </nav>
           {/*Buscador*/}
           <div className="flex items-center relative">
-            <input type="search" className="px-8 py-2 italic border border-gray-300 rounded-full shadow-md" placeholder="Buscar Recetas..." />
+            <input
+                type="search"
+                className="px-8 py-2 italic border border-gray-300 rounded-full shadow-md"
+                placeholder="Buscar Recetas..."
+                value={search}
+                onChange={ handleSearch}
+            />
             <div className="absolute left-2">
                <RiSearchLine className="ml-1 text-gray-500"  />  
             </div>

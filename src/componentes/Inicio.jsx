@@ -1,15 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import RecetaCard from './receta';
 
-const Inicio = () => {
-  const [recetas, setRecetas] = useState([]);
+const Inicio = ({ recetas }) => {
 
-  useEffect(() => {
-    fetch('http://localhost:3000/allRecipes')
-      .then(response => response.json())
-      .then(data => setRecetas(data));
-  }, []);
-  console.log(recetas);
 
   return (
     <div className="flex flex-wrap justify-center gap-12 mt-56">
