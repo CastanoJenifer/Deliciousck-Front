@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import RecetaCard from './receta';
 
 const Inicio = ({ recetas }) => {

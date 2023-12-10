@@ -13,7 +13,7 @@ const Header = ({ onSearch }) => {
     setSearch(e.target.value);
     onSearch(e.target.value);
   };
-  
+
   const handleTipoRecetaClick = async (tipoReceta) => {
    try {
      const response = await axios.get(`http://localhost:3000/recetas/${tipoReceta}`);
@@ -56,22 +56,62 @@ const Header = ({ onSearch }) => {
                 {/*Desplegable */}
                 <li className="relative group">
                    <a href= "/infoReceta" onClick={(e) => { e.preventDefault();
-                }} className=" text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent
-                    md:text-black-700 md:p-0 md:dark:text-500 transition-colors 
-                    duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Tipos de recetas</a>
+                }}
+                     className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-black-700 md:p-0 md:dark:text-500 transition-colors duration-300 hover:text-blue-500 cursor-pointer"
+                     aria-current="page"
+                  >
+                     Tipos de recetas
+                  </a>
 
-                    <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md">
-                      
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('tradicional')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">🍲 Tradicional</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('reposteria')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍰 Repostería</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('navidena')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🎄 Navideña</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('salsas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🌶️ Salsas</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('bebidas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍹 Bebidas </a></li>
-                     
+                  <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md w-300px">
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('tradicional')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍲 Tradicional
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('reposteria')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍰 Repostería
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('navidena')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🎄 Navideña
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('salsas')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🌶️ Salsas
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('bebidas')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍹 Bebidas
+                        </a>
+                     </li>
+                  </ul>
+                </li>
 
-                    </ul>
-                </li> 
-                
                 {/*Busqueda por filtros*/}
                 <li><a href="#" className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 
                 rounded md:bg-transparent md:text-black-700 md:p-0 
