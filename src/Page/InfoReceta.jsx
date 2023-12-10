@@ -10,10 +10,10 @@ const Inforeceta= () => {
   const [loading, setLoading] = useState(true);
   const [recetas, setRecipes] = useState([]);
 
-  const goToInicio = () => {
-    navigate("/");
+  const goBack = () => {
+    console.log("Going back...");
+    window.history.back();
   };
-
   const goToDetallesReceta = (recetaId) => {
     navigate(`/detallesReceta/${recetaId}`);
   };
@@ -57,29 +57,7 @@ const Inforeceta= () => {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-200 to-green-300">
-      <div className="bg-white shadow-md p-8 rounded-md w-4/5">
-        <button
-          className="absolute top-4 left-4 bg-black text-white p-4 shadow-lg rounded-full hover:bg-green-600 hover:scale-105 transition duration-300 ease-in-out"
-          onClick={goToInicio}
-        >
-          <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-        </button>
-  
-        <h1 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">{tipoReceta}</h1>
+    <> 
         {loading ? (
                   <div className="flex items-center justify-center min-h-screen">
                     <div className="flex items-center justify-center">
@@ -89,13 +67,67 @@ const Inforeceta= () => {
                     </div>
                   </div>
           ) : (
+            
+            <div 
+            className="flex items-center justify-center bg-cover bg-center relative"
+            style={{
+              backgroundImage: 'url(https://cdn.pixabay.com/photo/2016/12/10/21/26/food-1898194_1280.jpg)',
+              backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+       <div className="bg-green-400 bg-opacity-60 absolute inset-0"></div>
+        <button 
+        className="absolute top-4 left-4 bg-white text-black p-6 shadow-lg rounded-full hover:bg-green-500 hover:scale-105 transition duration-300 ease-in-out z-50 cursor-pointer"
+        onClick={goBack}
+      >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={1.5}
+        stroke="currentColor"
+        className="w-4 h-4"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M15.75 19.5L8.25 12l7.5-7.5"
+        />
+      </svg>
+    </button>
+            
+
+        <div className="mt-24 m-4 p-0">
+      
+        <h1
+  className="absolute top-0 left-0 right-0 text-center text-7xl font-extrabold text-white mb-6 z-10 uppercase"
+  style={{
+    WebkitTextStroke: '4px black', // Borde negro alrededor del texto
+    color: 'white', // Color blanco del texto
+    borderBottom: '8px solid #ccc', // Línea gris claro
+    padding: '20px',
+    textShadow: 'none', // Quitar la sombra
+  }}
+>
+  {tipoReceta}
+</h1>
+
+
+
+
+
+
+
+
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
           {recetas.map((receta) => (
             <div
               key={receta.cod}
-              className="group rounded-xl m-5 shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-90 hover:border-4 hover:border-green-500 relative"
+              className="group rounded-xl m-8 shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-90 hover:border-4 hover:border-black relative"
               style={{ background: 'linear-gradient(to right, #B4F0B4, #B4E3F0)' }}
+              onClick={() => goToDetallesReceta(receta.cod)}
             >
               <img
                 src={`http://localhost:3000/${receta.imagenprincipal}`}
@@ -108,18 +140,14 @@ const Inforeceta= () => {
               <div className="p-1">
                 <h2 className="text-xl font-semibold text-center mb-4">{receta.tiempoduracion}</h2>
               </div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => goToDetallesReceta(receta.cod)}
-              >
-              </button>
             </div>
           ))}
+          </div>
         </div>
-        )}
+        
         </div>
-      </div>
-   
+      )}
+   </>
   );
 };
 
