@@ -47,43 +47,86 @@ const Header = () => {
                 transition-colors duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Inicio</a></li>
            
                 {/*Desplegable */}
-                <li className="relative group">
-                   <a href= "/infoReceta" onClick={(e) => { e.preventDefault(); 
-                ; 
-                }} className=" text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent
-                    md:text-black-700 md:p-0 md:dark:text-500 transition-colors 
-                    duration-300 hover:text-blue-500 cursor-pointer" aria-current="page">Tipos de recetas</a>
+    
+             <li className="relative group">
+                  <a
+                     href="/infoReceta"
+                     onClick={(e) => {
+                        e.preventDefault();
+                     }}
+                     className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 rounded md:bg-transparent md:text-black-700 md:p-0 md:dark:text-500 transition-colors duration-300 hover:text-blue-500 cursor-pointer"
+                     aria-current="page"
+                  >
+                     Tipos de recetas
+                  </a>
 
-                    <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md">
-                      
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('tradicional')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">🍲 Tradicional</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('reposteria')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍰 Repostería</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('navidena')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🎄 Navideña</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('salsas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🌶️ Salsas</a></li>
-                      <li><a href="#" onClick={() => handleTipoRecetaClick('bebidas')}className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"> 🍹 Bebidas </a></li>
-                     
+                  <ul className="hidden absolute left-0 space-y-2 bg-white border border-gray-300 py-2 group-hover:block rounded-md shadow-md w-300px">
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('tradicional')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍲 Tradicional
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('reposteria')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍰 Repostería
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('navidena')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🎄 Navideña
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('salsas')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🌶️ Salsas
+                        </a>
+                     </li>
+                     <li>
+                        <a
+                        href="#"
+                        onClick={() => handleTipoRecetaClick('bebidas')}
+                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full"
+                        >
+                        🍹 Bebidas
+                        </a>
+                     </li>
+                  </ul>
+                </li>
 
-                    </ul>
-                </li> 
-                
                 {/*Busqueda por filtros*/}
                 <li><a href="#" className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 
                 rounded md:bg-transparent md:text-black-700 md:p-0 
                 md:dark:text-blue-500 transition-colors duration-300 
                 hover:text-blue-500 cursor-pointer" aria-current="page">Busqueda por filtros</a></li>             
 
-             </ul>
-          </nav>
-          {/*Buscador*/}
-          <div className="flex items-center relative">
-            <input type="search" className="px-8 py-2 italic border border-gray-300 rounded-full shadow-md" placeholder="Buscar Recetas..." />
-            <div className="absolute left-2">
-               <RiSearchLine className="ml-1 text-gray-500"  />  
+                </ul>
+            </nav>
+                  {/*Buscador*/}
+                  <div className="flex items-center relative">
+                     <input type="search" className="px-8 py-2 italic border border-gray-300 rounded-full shadow-md" placeholder="Buscar Recetas..." />
+                     <div className="absolute left-2">
+                        <RiSearchLine className="ml-1 text-gray-500"  />  
+                     </div>
+                  </div>         
+               </div>
             </div>
-          </div>         
-       </div>
-    </div>
- </div>
+         </div>
  
   );
 }

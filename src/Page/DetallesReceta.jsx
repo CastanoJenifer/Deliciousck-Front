@@ -14,7 +14,8 @@ const DetallesReceta = () => {
   });
   
   const { recetaId } = useParams();
-    const goBack = () => {
+  
+  const goBack = () => {
         window.history.back();
       };
 
@@ -34,6 +35,118 @@ const DetallesReceta = () => {
     
         fetchDetallesReceta();
       }, []);
+
+      const MAX_DESC_LENGTH = 500; // Longitud máxima de la descripción antes de dividirla
+
+      useEffect(() => {
+        const descripcionDiv = document.getElementById("descripcionDiv");
+      
+        if (descripcionDiv) {
+          // Limpiar contenido existente antes de agregar nuevas páginas
+          descripcionDiv.innerHTML = '';
+      
+          const descripcion = detallesReceta.pasos
+            .map((paso) => paso.descripcion)
+            .join("\n");
+          const lineas = descripcion.split("\n");
+          let paginaActual = 1;
+          let paginaContenido = "";
+      
+          for (let i = 0; i < lineas.length; i++) {
+            if (paginaContenido.length + lineas[i].length > MAX_DESC_LENGTH) {
+              const nuevaPagina = document.createElement("div");
+              nuevaPagina.innerText = paginaContenido.trim(); // Elimina espacios al inicio y al final
+              nuevaPagina.classList.add("descripcion-pagina");
+              descripcionDiv.appendChild(nuevaPagina);
+              paginaActual += 1;
+              paginaContenido = `${lineas[i]}\n`;
+            } else {
+              paginaContenido += `${lineas[i]}\n`;
+            }
+          }
+      
+          if (paginaContenido.length > 0) {
+            const ultimaPagina = document.createElement("div");
+            ultimaPagina.innerText = paginaContenido.trim();
+            ultimaPagina.classList.add("descripcion-pagina");
+            descripcionDiv.appendChild(ultimaPagina);
+          }
+      
+          // Ocultar todas las páginas excepto la primera
+          const paginas = document.querySelectorAll(".descripcion-pagina");
+          paginas.forEach((pagina, index) => {
+            if (index > 0) {
+              pagina.style.display = "none";
+            }
+          });
+        }
+      }, [detallesReceta]);
+      
+
+
+    
+        const mostrarPagina = (pagina) => {
+          const paginas = document.querySelectorAll(".descripcion-pagina");
+          paginas.forEach((p, index) => {
+            p.style.display = index === pagina ? "block" : "none";
+          });
+        
+          // Ocultar información de utensilios e ingredientes si no es la primera página
+          const utensilios = document.querySelector(".utensilios-clase");
+          const ingredientes = document.querySelector(".ingredientes-clase");
+        
+          if (pagina > 0) {
+            utensilios.style.display = "none";
+            ingredientes.style.display = "none";
+          } else {
+            utensilios.style.display = "block";
+            ingredientes.style.display = "block";
+          }
+        };
+    
+        const mostrarSiguientePagina = () => {
+          const paginas = document.querySelectorAll(".descripcion-pagina");
+          let paginaActual = -1;
+        
+          // Encontrar la página actual
+          paginas.forEach((pagina, index) => {
+            if (pagina.style.display !== "none") {
+              paginaActual = index;
+            }
+          });
+        
+          // Asegurarse de que hay una página actual antes de proceder
+          if (paginaActual !== -1 && paginaActual < paginas.length - 1) {
+            // Ocultar la página actual
+            paginas[paginaActual].style.display = "none";
+        
+            // Mostrar la siguiente página solo si hay más páginas y llenarla completamente
+            if (paginaActual + 1 < paginas.length) {
+              paginas[paginaActual + 1].style.display = "block";
+              mostrarPagina(paginaActual + 1);
+            }
+          }
+        };
+
+        const mostrarPaginaAnterior = () => {
+          const paginas = document.querySelectorAll(".descripcion-pagina");
+          let paginaActual = -1;
+        
+          // Encontrar la página actual
+          paginas.forEach((pagina, index) => {
+            if (pagina.style.display !== "none") {
+              paginaActual = index;
+            }
+          });
+        
+          // Asegurarse de que hay una página actual antes de proceder
+          if (paginaActual !== -1 && paginaActual > 0) {
+            // Mostrar la página anterior
+            paginas[paginaActual - 1].style.display = "block";
+            mostrarPagina(paginaActual - 1);
+          }
+        };
+      
 
     return (
        <>
@@ -56,7 +169,7 @@ const DetallesReceta = () => {
       >
         <div className="bg-green-400 bg-opacity-50 absolute inset-0"></div>
         <button
-          className="absolute top-4 left-4 bg-green-500 text-white p-6 shadow-lg rounded-full hover:bg-green-600 hover:scale-105 transition duration-300 ease-in-out z-10"
+          className="absolute top-4 left-4 bg-white text-black p-6 shadow-lg rounded-full hover:bg-green-500 hover:scale-105 transition duration-300 ease-in-out z-50 cursor-pointer"
           onClick={goBack}
         >
           <svg
@@ -104,12 +217,12 @@ const DetallesReceta = () => {
      
           {/* Sección derecha: Utensilios, ingredientes, descripción, etc. */}
         <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
-          <h4 className="text-gray-700 text-lg mt-2 mb-4">
+          <h4 className="text-gray-700 text-lg mt-2 mb-4 utensilios-clase">
               <span className="text-black text-xl">Utensilios: {detallesReceta.her.map((herramienta) => herramienta.nombre).join(' , ')}</span>
           </h4>
             
             <h4 className="text-gray-700 text-lg mt-2 mb-4">
-            <span className="text-black text-xl ">
+            <span className="text-black text-xl ingredientes-clase">
             Ingredientes: {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
             </span>
           </h4>
@@ -117,13 +230,37 @@ const DetallesReceta = () => {
           <h4 className="text-gray-700 text-lg ">
           <span className="text-black text-xl font-semibold">Descripción:</span>
           </h4>
-            <ol className="list-decimal list-inside">
-           {detallesReceta.pasos.map((paso, index) => (
-           <li key={index} className="text-black text-xl">
-            {paso.descripcion}
-          </li>
-        ))}
-      </ol>
+
+          <div id="descripcionDiv">
+          <ol className="list-decimal list-inside">
+            {detallesReceta.pasos.map((paso, index) => (
+              <li key={index} className="descripcion-pagina">
+                <p className="text-2xl font-bold mb-2">{index + 1}.</p>
+                <p className="text-xl">{paso.descripcion}</p>
+              </li>
+            ))}
+          </ol>
+       </div>
+ 
+     
+
+        
+      <div className="flex items-center justify-center mt-8">
+        <button
+          onClick={mostrarSiguientePagina}
+          className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition duration-300 ease-in-out mr-8"
+        >
+          Siguiente página
+        </button>
+
+        <button
+          onClick={mostrarPaginaAnterior}
+          className="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition duration-300 ease-in-out"
+        >
+          Página anterior
+        </button>
+    </div>
+
       </div>
 
       </div>
