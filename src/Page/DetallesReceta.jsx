@@ -193,16 +193,16 @@ const DetallesReceta = () => {
        {/* Sección Izquierda: Titulo, imagen, tipo*/}
        <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10 relative overflow-hidden">
   <h4 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">
-    <span className="text-black text-2xl font-semibold">{detallesReceta.receta[0].nombre}</span>
+    <span className="text-black text-4xl font-semibold">{detallesReceta.receta[0].nombre}</span>
   </h4>
   <img
     src={`http://localhost:3000/${detallesReceta.receta[0].imagenprincipal}`}
     alt={detallesReceta.receta[0].nombre}
-    className="w-4/5 h-80 mx-auto object-cover rounded-lg border border-green-500 border-3 text-center m-14"
+    className="w-4/5 h-80 mx-auto object-cover rounded-lg border border-green-500 border-3 text-center m-6"
   />
 
   <h4 className="text-gray-700 text-lg mt-2 mb-4 text-center">
-    <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tipo}</span>
+    <span className="text-black text-2xl font-semibold">{detallesReceta.receta[0].tipo}</span>
   </h4>
   <h4 className="text-gray-700 text-lg mt-2 mb-4 m-14 text-center">
     <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tiempoduracion}</span>
@@ -226,12 +226,15 @@ const DetallesReceta = () => {
           {/* Sección derecha: Utensilios, ingredientes, descripción, etc. */}
         <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
           <h4 className="text-gray-700 text-lg mt-2 mb-4 utensilios-clase">
-              <span className="text-black text-xl">Utensilios: {detallesReceta.her.map((herramienta) => herramienta.nombre).join(' , ')}</span>
+              <span className="text-black text-xl font-semibold">Utensilios: </span>
+              <span className="text-black text-xl font-Montserrat">{detallesReceta.her.map((herramienta) => herramienta.nombre).join(' , ')}</span>
           </h4>
             
             <h4 className="text-gray-700 text-lg mt-2 mb-4">
-            <span className="text-black text-xl ingredientes-clase">
-            Ingredientes: {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
+            <span className="text-black text-xl ingredientes-clase font-semibold">
+            Ingredientes: </span>
+            <span className="text-black text-xl ingredientes-clase font-Montserrat">
+            {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
             </span>
           </h4>
           <h4 className="text-gray-700 text-lg ">
@@ -239,15 +242,14 @@ const DetallesReceta = () => {
           </h4>
 
           <div id="descripcionDiv">
-          <ol className="list-decimal list-inside">
+          <ol className="list-inside">
             {detallesReceta.pasos.map((paso, index) => (
               <li key={index} className="descripcion-pagina">
-                <p className="text-2xl font-bold mb-2">{index + 1}.</p>
-                <p className="text-xl">{paso.descripcion}</p>
+                <p className="mb-2">{index + 1}.{paso.descripcion}</p>
               </li>
             ))}
           </ol>
-       </div>
+          </div>
        <div className="flex items-center justify-center mt-8">
             <button
               onClick={mostrarPaginaAnterior}
