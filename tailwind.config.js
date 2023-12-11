@@ -10,7 +10,7 @@ module.exports = {
         merriweather: ['Merriweather', 'serif'],
         freemono: ['Free Mono', 'monospace'],
       },
-    },
+    }
   },
   plugins: [],
 }

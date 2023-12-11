@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
     background: rgb(192,228,242);
@@ -21,3 +22,30 @@ body {
   
   
   
+=======
+body {
+    margin: 0;
+    background: rgb(192,228,242);
+    background: linear-gradient(90deg, rgba(192,228,242,1) 29%, rgba(188,244,208,1) 37%);
+    /*background: rgb(238,225,19);
+    background: linear-gradient(90deg, rgba(238,225,19,1) 0%, rgba(24,232,97,1) 35%, rgba(208,219,236,1) 100%);
+    */
+}
+
+.targeta{
+    background: rgb(231,215,109);
+    background: linear-gradient(82deg, rgb(179, 239, 166) 39%, rgb(199, 231, 126) 58%);
+}
+
+.card:hover{
+    transform: scale(1.1);
+    transition: all 0.5s ease-in-out;
+}
+
+#descripcionDiv {
+    font: 'Montserat';
+    color: black;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+>>>>>>> 897f4317664883da4c97c012ff5012af099453ec
