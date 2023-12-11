@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios'
 import Comentarios from "./Comentarios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
