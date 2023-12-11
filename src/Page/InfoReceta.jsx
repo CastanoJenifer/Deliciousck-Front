@@ -101,25 +101,17 @@ const Inforeceta= () => {
         <div className="mt-24 m-4 p-0">
       
         <h1
-  className="absolute top-0 left-0 right-0 text-center text-7xl font-extrabold text-white mb-6 z-10 uppercase"
-  style={{
-    WebkitTextStroke: '4px black', // Borde negro alrededor del texto
-    color: 'white', // Color blanco del texto
-    borderBottom: '8px solid #ccc', // Línea gris claro
-    padding: '20px',
-    textShadow: 'none', // Quitar la sombra
-  }}
->
-  {tipoReceta}
-</h1>
-
-
-
-
-
-
-
-
+          className="absolute top-0 left-0 right-0 text-center text-7xl font-extrabold text-white mb-6 z-10 uppercase"
+          style={{
+            WebkitTextStroke: '4px black', // Borde negro alrededor del texto
+            color: 'white', // Color blanco del texto
+            borderBottom: '8px solid #ccc', // Línea gris claro
+            padding: '20px',
+          
+          }}
+        >
+          {tipoReceta}
+        </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 overflow-hidden">
           {recetas.map((receta) => (

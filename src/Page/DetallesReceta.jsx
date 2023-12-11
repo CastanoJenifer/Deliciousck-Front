@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios'
+import Comentarios from "./Comentarios";
 
 
 const DetallesReceta = () => {
@@ -82,9 +83,6 @@ const DetallesReceta = () => {
         }
       }, [detallesReceta]);
       
-
-
-    
         const mostrarPagina = (pagina) => {
           const paginas = document.querySelectorAll(".descripcion-pagina");
           paginas.forEach((p, index) => {
@@ -241,10 +239,6 @@ const DetallesReceta = () => {
             ))}
           </ol>
        </div>
- 
-     
-
-        
        <div className="flex items-center justify-center mt-8">
             <button
               onClick={mostrarPaginaAnterior}
@@ -266,7 +260,9 @@ const DetallesReceta = () => {
 
       </div>
       )}
+      <Comentarios recetaId={recetaId} />
       </>
+       
     );
 };
 
