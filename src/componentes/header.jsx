@@ -151,10 +151,10 @@ const Header = ({ onSearch }) => {
                      e.preventDefault();
                      navigate('/Meritos');
                   }}
-                className="text-xl flex flex-col border sm:text-2xl md:text-3xl  block py-2 px-3 text-black bg-blue-700 
+                className="text-xl sm:text-2xl md:text-3xl  block py-2 px-3 text-black bg-blue-700 
                 rounded md:bg-transparent md:text-black-700 md:p-1
                 md:dark:text-blue-500 transition-colors duration-300 
-                hover:text-blue-500 cursor-pointer font-freemono font-bold " aria-current="page">Acerca de... </a></li>  
+                hover:text-blue-500 cursor-pointer font-freemono font-bold outline-none " aria-current="page">Acerca de... </a></li>  
         
 
              </ul>
