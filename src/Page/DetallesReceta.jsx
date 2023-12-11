@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios'
 import Comentarios from "./Comentarios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const DetallesReceta = () => {
@@ -224,7 +227,6 @@ const DetallesReceta = () => {
             Ingredientes: {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
             </span>
           </h4>
-
           <h4 className="text-gray-700 text-lg ">
           <span className="text-black text-xl font-semibold">Descripción:</span>
           </h4>
