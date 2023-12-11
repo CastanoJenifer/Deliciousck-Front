@@ -113,10 +113,15 @@ const Header = ({ onSearch }) => {
                 </li>
 
                 {/*Busqueda por filtros*/}
-                <li><a href="#" className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 
+                <li> <a href="/Meritos"
+                  onClick={(e) => {
+                     e.preventDefault();
+                     navigate('/Meritos');
+                  }}
+                className="text-xl sm:text-2xl md:text-3xl italic block py-2 px-3 text-black bg-blue-700 
                 rounded md:bg-transparent md:text-black-700 md:p-0 
                 md:dark:text-blue-500 transition-colors duration-300 
-                hover:text-blue-500 cursor-pointer" aria-current="page">Busqueda por filtros</a></li>             
+                hover:text-blue-500 cursor-pointer" aria-current="page">Acerca de... </a></li>             
 
              </ul>
           </nav>

@@ -41,6 +41,8 @@ const Contenido = () => {
       
       {/*-----------------Inicio-----------------*/}
       <Inicio recetas={ filteredRecetas} />
+
+     
      </div>
     </>
   )
