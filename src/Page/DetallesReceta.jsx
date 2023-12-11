@@ -190,32 +190,39 @@ const DetallesReceta = () => {
         </button>
 
        
-       {/* Sección Izquierda: Titulo, imagen, tipo, valoracion */}
-        <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
-          <h4 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">
-          <span className="text-black text-x2 font-semibold">{detallesReceta.receta[0].nombre}</span>
-          </h4>
-          <img
-                src={`http://localhost:3000/${detallesReceta.receta[0].imagenprincipal}`}
-                alt={detallesReceta.receta[0].nombre}
-                className="w-4/5 h-80 mx-auto object-cover rounded-t-xl text-center m-6"
-              />
-          <h4 className="text-gray-700 text-lg mt-2 mb-4  text-center">
-          <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tipo}</span>
-          </h4>
-          <h4 className="text-gray-700 text-lg mt-2 mb-4  text-center">
-          <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tiempoduracion}</span>
-          </h4>
-          <h4 className="text-gray-700 text-lg mb-4  text-center">
-            <span className="text-black text-xl font-semibold">
-            valoracion: 
-            </span>
-          </h4>
-        </div>
+       {/* Sección Izquierda: Titulo, imagen, tipo*/}
+       <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10 relative overflow-hidden">
+  <h4 className="text-center text-4xl font-extrabold text-black-700 italic mb-6">
+    <span className="text-black text-2xl font-semibold">{detallesReceta.receta[0].nombre}</span>
+  </h4>
+  <img
+    src={`http://localhost:3000/${detallesReceta.receta[0].imagenprincipal}`}
+    alt={detallesReceta.receta[0].nombre}
+    className="w-4/5 h-80 mx-auto object-cover rounded-lg border border-green-500 border-3 text-center m-14"
+  />
+
+  <h4 className="text-gray-700 text-lg mt-2 mb-4 text-center">
+    <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tipo}</span>
+  </h4>
+  <h4 className="text-gray-700 text-lg mt-2 mb-4 m-14 text-center">
+    <span className="text-black text-xl font-semibold">{detallesReceta.receta[0].tiempoduracion}</span>
+  </h4>
+
+  {/* Algo que se mueva */}
+  <div className="absolute bottom-8 left-0 w-full text-center">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/1830/1830839.png"
+      alt="Imagen en movimiento"
+      className="w-16 h-16 animate-bounce mx-auto"
+    />
+    <p className="text-green-500 font-bold mt-2">¡Explora el arte de la cocina!</p>
+</div>
+
+</div>
+
        
         <div className="h-[89vh] w-2 bg-black absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20"></div>
-
-     
+        
           {/* Sección derecha: Utensilios, ingredientes, descripción, etc. */}
         <div className="w-1/3 h-[90vh] bg-white p-8 rounded-md z-10">
           <h4 className="text-gray-700 text-lg mt-2 mb-4 utensilios-clase">

@@ -41,8 +41,6 @@ const Comentarios = ({ recetaId }) => {
         fetchData();
       }, [recetaId]);
   
-  
- 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -122,16 +120,16 @@ const Comentarios = ({ recetaId }) => {
     
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#fff', padding: '20px' }}>
     {/* Formulario para ingresar comentarios */}
-    <div style={{ border: '2px solid #4CAF50', borderRadius: '10px', padding: '20px', width: '80%', margin: 'auto', marginBottom: '20px', textAlign: 'center', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
+    <div style={{ border: '2px solid #4CAF50', borderRadius: '10px', padding: '20px', width: '40%', margin: 'auto', marginBottom: '20px', textAlign: 'center', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div style={{ marginBottom: '10px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <label style={{ fontSize: '16px', marginBottom: '5px' }}>Nombre:</label>
-            <input type="text" value={nombrepersona} onChange={handleNombreChange} style={{ marginLeft: '10px', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }} />
+            <label style={{ fontSize: '16px', marginBottom: '5px', marginLeft: '12px'}}>Nombre:</label>
+            <input type="text" value={nombrepersona} onChange={handleNombreChange} style={{ marginLeft: '10px', padding: '8px', borderRadius: '6px', border: '1px solid #ccc' }} />
         </div>
 
         <div style={{ marginBottom: '10px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <label style={{ fontSize: '16px', marginBottom: '5px' }}>
+        <label style={{ fontSize: '16px', marginBottom: '5px', marginRight: '8px' }}>
             <textarea
             value={comentario}
             onChange={handleComentarioChange}
@@ -142,7 +140,7 @@ const Comentarios = ({ recetaId }) => {
         </div>
 
             <div style={{ marginBottom: '10px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <label style={{ fontSize: '16px', marginBottom: '5px' }}>Valoración: {renderValoracion(valoracion)}</label>
+                <label style={{ fontSize: '16px', marginBottom: '5px',  marginLeft: '15px' }}>Valoración: {renderValoracion(valoracion)}</label>
             </div>
             <button type="submit" style={{ background: '#4CAF50', color: 'white', padding: '12px', borderRadius: '5px', cursor: 'pointer', marginTop: '20px', fontSize: '16px' }}>
                 Enviar comentario

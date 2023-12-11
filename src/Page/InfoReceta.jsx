@@ -123,7 +123,7 @@ const Inforeceta= () => {
               <img
                 src={`http://localhost:3000/${receta.imagenprincipal}`}
                 alt={receta.nombre}
-                className="w-4/5 h-80 mx-auto object-cover rounded-t-xl text-center m-4"
+                className="w-4/5 h-80 mx-auto object-cover rounded-lg text-center m-4"
               />
               <div className="p-1">
                 <h2 className="text-xl font-semibold text-center mb-4">{receta.nombre}</h2>
