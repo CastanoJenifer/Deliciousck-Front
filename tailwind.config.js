@@ -3,7 +3,14 @@ module.exports = {
   content: ["./index.html",
     "./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        agatha: ['Agatha', 'cursive'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        merriweather: ['Merriweather', 'serif'],
+        freemono: ['Free Mono', 'monospace'],
+      },
+    },
   },
   plugins: [],
 }
