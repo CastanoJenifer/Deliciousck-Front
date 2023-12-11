@@ -28,16 +28,15 @@ const DetallesReceta = () => {
             setLoading(true);
             const response = await axios.get(`http://localhost:3000/recetas/body/${recetaId}`);
             setDetallesReceta(response.data);
-            console.log(detallesReceta);
           } catch (error) {
             console.error('Error al obtener detalles de la receta:', error);
-          }finally {
+          } finally {
             setLoading(false);
           }
         };
-    
+      
         fetchDetallesReceta();
-      }, []);
+      }, [recetaId]);
 
       const MAX_DESC_LENGTH = 500; // Longitud máxima de la descripción antes de dividirla
 
@@ -229,10 +228,10 @@ const DetallesReceta = () => {
               <span className="text-black text-xl font-Montserrat">{detallesReceta.her.map((herramienta) => herramienta.nombre).join(' , ')}</span>
           </h4>
             
-            <h4 className="text-gray-700 text-lg mt-2 mb-4">
-            <span className="text-black text-xl ingredientes-clase font-semibold">
+            <h4 className="text-gray-700 text-lg mt-2 mb-4 ingredientes-clase">
+            <span className="text-black text-xl  font-semibold">
             Ingredientes: </span>
-            <span className="text-black text-xl ingredientes-clase font-Montserrat">
+            <span className="text-black text-xl font-Montserrat">
             {detallesReceta.ing.map((item) => item.ingrediente).join(' , ')}
             </span>
           </h4>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 body {
     margin: 0;
     background: rgb(192,228,242);
@@ -18,11 +18,6 @@ body {
     transition: all 0.5s ease-in-out;
 }
 
-
-  
-  
-  
-=======
 body {
     margin: 0;
     background: rgb(192,228,242);
@@ -48,4 +43,3 @@ body {
     font-size: 1.2rem;
     text-align: justify;
 }
->>>>>>> 897f4317664883da4c97c012ff5012af099453ec
