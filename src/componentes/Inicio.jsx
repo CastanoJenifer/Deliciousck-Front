@@ -5,7 +5,7 @@ const Inicio = ({ recetas }) => {
 
 
   return (
-    <div className="flex flex-wrap justify-center gap-12 mt-56 mb-12">
+    <div className="flex flex-wrap justify-center text-center gap-12 mt-56 mb-12">
       {recetas.map((receta) => (
         <RecetaCard 
           key={receta.cod}
